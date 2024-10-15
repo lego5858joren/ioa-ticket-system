@@ -1,0 +1,37 @@
+/* HomePage.css - Custom Styles for Islands of Adventure Home Page */
+
+.homepage-container {
+    background-color: #0078FF; /* Replace with the blue color from your provided image */
+    height: 100vh;
+    padding-top: 50px;
+}
+
+.font-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #ffffff; /* White color for the text */
+}
+
+.jumbotron {
+    background: rgba(0, 0, 128, 0.7); /* Keep the semi-transparent overlay for contrast */
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-outline-light {
+    color: white;
+    border-color: white;
+}
+
+.btn-outline-light:hover {
+    background-color: white;
+    color: black;
+}
+
+.text-center p {
+    color: white;
+}
+

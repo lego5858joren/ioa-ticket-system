@@ -1,12 +1,25 @@
 import React from 'react';
-import RideList from './components/RideList'; // Import RideList component
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PurchaseTicketPage from './pages/PurchaseTicketPage';
+import RideSelectionPage from './pages/RideSelectionPage';
 
 function App() {
-  return (
-      <div className="App">
-        <RideList /> {/* Add RideList to render */}
-      </div>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/purchase-ticket" element={<PurchaseTicketPage />} />
+            <Route path="/ride-selection" element={<RideSelectionPage />} />
+        </Routes>
+    );
 }
 
 export default App;
+
+
+
+
+
+
+
+
