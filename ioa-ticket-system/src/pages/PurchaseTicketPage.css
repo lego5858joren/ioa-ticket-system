@@ -1,0 +1,98 @@
+/* PurchaseTicketPage.css - Styles for the Ticket Purchase Page */
+
+body {
+    background-color: #007bff;
+}
+
+.ticket-purchase-container {
+    background-color: #1a1b54;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.ticket-purchase-page .header {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.express-pass-info-container {
+    background-color: #1a1b54;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.express-pass-options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.express-pass-option {
+    width: 45%;
+    max-width: 300px;
+}
+
+.express-pass-option img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.express-pass-option p {
+    font-size: 1rem;
+    color: white;
+    padding: 10px;
+    background-color: #2a2b75;
+    border-radius: 10px;
+}
+
+
+
+

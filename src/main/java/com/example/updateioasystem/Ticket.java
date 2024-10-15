@@ -1,12 +1,8 @@
 package com.example.updateioasystem;
 
-
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-import com.example.updateioasystem.ExpressPass;
-
 
 // Represents a ticket to Universal Orlando's Islands of Adventure.
 public class Ticket {
@@ -104,6 +100,7 @@ public class Ticket {
         return expressPass;
     }
 }
+
 
 
 
