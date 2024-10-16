@@ -1,0 +1,30 @@
+.ride-selection-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.ride-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+.ride-item {
+    width: 200px;
+    text-align: center;
+}
+
+.ride-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.ride-item img:hover {
+    transform: scale(1.05);
+}
+
+

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import './PurchaseTicketPage.css';
+import { useNavigate } from 'react-router-dom';
 
 function PurchaseTicketPage() {
     const [date, setDate] = useState('');
     const [expressPass, setExpressPass] = useState('None');
     const [message, setMessage] = useState('');
 
-    const handleDateChange = (event) => {
-        setDate(event.target.value);
+    const navigate = useNavigate(); // Initialize useNavigate hook
+
+    const handleDateChange = (e) => {
+        setDate(e.target.value); // Ensure the state is getting updated correctly
     };
 
     const handleExpressPassChange = (event) => {
@@ -18,31 +21,22 @@ function PurchaseTicketPage() {
         event.preventDefault();
         console.log('Form submitted');
 
-        // Parse selected date
-        const selectedDateParts = date.split('-'); // Assuming 'yyyy-MM-dd' format
-        const selectedDate = new Date(
-            Date.UTC(
-                parseInt(selectedDateParts[0], 10), // Year
-                parseInt(selectedDateParts[1], 10) - 1, // Month (0-indexed)
-                parseInt(selectedDateParts[2], 10) // Day
-            )
-        );
-
-        // Set 'today' to UTC as well, ignoring time
+        // Parse selected date and set time to midnight in local time
+        const [year, month, day] = date.split('-'); // Assuming 'date' is in 'YYYY-MM-DD' format from the input field
+        const selectedDate = new Date(year, month - 1, day); // Note: Month is 0-indexed in JavaScript
         const today = new Date();
-        const todayUTC = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
+        today.setHours(0, 0, 0, 0); // Set today's date to midnight in local time
 
-        console.log('Selected Date:', selectedDate);
-        console.log('Today (UTC):', todayUTC);
+        console.log('Selected Date (Adjusted):', selectedDate);
+        console.log('Today (Local):', today);
 
-        // Check if the selected date is before today
-        if (selectedDate < todayUTC) {
+        if (selectedDate < today) {
             setMessage('Please select a valid date. The date must be today or in the future.');
             console.log('Date is in the past, returning...');
             return;
         }
 
-        // Convert the selected date to the format "yyyy-MM-dd"
+        // Proceed with purchasing the ticket
         const formattedDate = selectedDate.toISOString().split('T')[0];
         console.log('Formatted Date:', formattedDate);
 
@@ -50,8 +44,6 @@ function PurchaseTicketPage() {
             date: formattedDate,
             expressPass,
         };
-
-        console.log('Sending ticket data:', ticketData);
 
         try {
             const response = await fetch('http://localhost:8080/api/buy-ticket', {
@@ -62,23 +54,21 @@ function PurchaseTicketPage() {
                 body: JSON.stringify(ticketData),
             });
 
-            console.log('Response received:', response);
-
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
 
-            const responseData = await response.text(); // Use `.text()` to read the plain response message
+            const responseData = await response.text();
             console.log('Response from backend:', responseData);
 
             setMessage(responseData);
+            // Redirect to the Ride Selection page after successful purchase
+            navigate('/ride-selection');
         } catch (error) {
             console.error('Error purchasing ticket:', error);
             setMessage('Error purchasing ticket. Please try again.');
         }
     };
-
-
 
     return (
         <div className="ticket-purchase-container">
@@ -116,7 +106,7 @@ function PurchaseTicketPage() {
                 <h2>Express Pass Options</h2>
                 <div className="express-pass-options">
                     <div className="express-pass-option">
-                        <img src={require('../assets/images/SingleUseExpress.jpg')} alt="Single Use Express Pass"/>
+                        <img src={require('../assets/images/SingleUseExpress.jpg')} alt="Single Use Express Pass" />
                         <p>Single-Use Express Pass: Allows you to skip the line once per ride.</p>
                     </div>
                     <div className="express-pass-option">
@@ -130,5 +120,6 @@ function PurchaseTicketPage() {
 }
 
 export default PurchaseTicketPage;
+
 
 
