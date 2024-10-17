@@ -1,30 +1,45 @@
 .ride-selection-container {
-    text-align: center;
     padding: 20px;
+    background-color: #007bff; /* Retain the blue background */
+    color: white; /* Ensure the text is readable against the blue background */
+    text-align: center; /* Center all text inside this container, including the header */
 }
 
 .ride-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 20px;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px; /* Reduce gap to make it more compact */
 }
 
 .ride-item {
-    width: 200px;
-    text-align: center;
+    background-color: white; /* White background for contrast against blue */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow to make it pop */
+}
+
+.ride-item:hover {
+    transform: scale(1.05);
 }
 
 .ride-item img {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s;
+    height: 220px; /* Increase height for larger images */
+    object-fit: cover; /* Keep images from being distorted */
 }
 
-.ride-item img:hover {
-    transform: scale(1.05);
+.ride-item p {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    margin: 0;
+    color: #333; /* Make text stand out against the white background */
 }
+
+
+
+
+
 
 

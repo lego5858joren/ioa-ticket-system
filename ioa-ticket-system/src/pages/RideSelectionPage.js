@@ -1,4 +1,5 @@
 import React from 'react';
+import './RideSelectionPage.css'
 import caroSeusselRide from '../assets/images/ride_images/caro_seussel_ride.jpg';
 import catInTheHatRide from '../assets/images/ride_images/cat_in_the_hat_ride.jpg';
 import doctorDoomFearFallRide from '../assets/images/ride_images/doctor_doom_fear_fall_ride.jpg';
